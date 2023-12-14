@@ -15,9 +15,23 @@ const { NotImplementedError } = require('../extensions/index.js');
  * => 'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'
  *
  */
-function repeater(/* str, options */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function repeater(str, options) {
+  const additionalStr = [];
+  for (let i = 0; i < `${options.additionRepeatTimes}`; i++) {
+    additionalStr.push(`${options.addition}`)
+  }
+  const test = additionalStr.join(`${options.additionSeparator}`)
+
+
+  let res = [];
+  for (let i = 0; i < `${options.repeatTimes}`; i++) {
+    res.push(`${str}${test}`)
+
+  }
+
+  return res.join(`${options.separator}`);
+
+
 }
 
 module.exports = {
