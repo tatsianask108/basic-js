@@ -20,26 +20,27 @@ function transform(arr) {
     throw new Error(`'arr' parameter must be an instance of the Array!`)
   };
 
-  console.log(arr);
 
   for (let i = 0; i < arr.length; i++) {
     switch (arr[i]) {
       case "--double-next":
-        arr[i+1]? res.push(arr[i+1]) : null;
+        arr[i + 1] ? res.push(arr[i + 1]) : null;
         break;
-  
+
       case "--double-prev":
-        arr[i-1]? res.push(arr[i-1]) : null;
+        arr[i - 1] ? res.push(arr[i - 1]) : null;
         break;
-  
+
       case "--discard-next":
-        arr[++i] = undefined;
+        arr[i + 1] = undefined;
+        i++;
         break;
-  
+
       case "--discard-prev":
-        arr[i-1] && res.pop(); // если предыдущий андефайнд
+        arr[i - 1] && res.pop(); // если предыдущий элемент существует и он НЕ undefined
+        // typeof arr[i - 1] !== 'undefined' ? res.pop() : null;
         break;
-  
+
       default:
         res.push(arr[i]);
     }
